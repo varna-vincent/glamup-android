@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "788481771944",
+    "firebase_url": "https://glamup-2019.firebaseio.com",
+    "project_id": "glamup-2019",
+    "storage_bucket": "glamup-2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788481771944:android:0e8b6a4d398941e3",
+        "android_client_info": {
+          "package_name": "com.coen499.glampup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788481771944-6mmd63hq4telac9k1sf7ddiu8h6m1ifb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDyAdQBl3eRHg5WGEkcI16OlQkvkg62xY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788481771944-6mmd63hq4telac9k1sf7ddiu8h6m1ifb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788481771944:android:e74d9747910d0126",
+        "android_client_info": {
+          "package_name": "com.coen499.glamup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788481771944-6mmd63hq4telac9k1sf7ddiu8h6m1ifb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDyAdQBl3eRHg5WGEkcI16OlQkvkg62xY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788481771944-6mmd63hq4telac9k1sf7ddiu8h6m1ifb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

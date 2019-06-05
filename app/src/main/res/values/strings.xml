@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GlamUp</string>
+    <string name="tag_line">Showcase your beauty</string>
+    <string name="login">Log In</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
