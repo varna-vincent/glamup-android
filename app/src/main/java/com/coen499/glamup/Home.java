@@ -144,7 +144,8 @@ public class Home extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ProductCardHolder holder, int position) {
 
             Log.d("Home.Products", productList.get(position).getProductName());
-            holder.getProductCardCaption().setText(productList.get(position).getProductName());
+            String imgTitle = productList.get(position).getProductName() + " by " + productList.get(position).getProductOwner();
+            holder.getProductCardCaption().setText(imgTitle);
             setPhotoByProductId(holder.getProductCardPhoto(), productList.get(position).getProductImage());
             setProductItemClickListener(holder.getParentLayout(), productList.get(position).getId());
         }
@@ -159,6 +160,7 @@ public class Home extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReferenceFromUrl(imageURL);
+        Log.d("Home - img", "in setPhotoByProductId" + storageRef);
         final long ONE_MEGABYTE = 1024 * 1024;
         storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
