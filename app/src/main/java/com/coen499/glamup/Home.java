@@ -33,6 +33,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,7 +148,7 @@ public class Home extends AppCompatActivity {
             String imgTitle = productList.get(position).getProductName() + " by " + productList.get(position).getProductOwner();
             holder.getProductCardCaption().setText(imgTitle);
             setPhotoByProductId(holder.getProductCardPhoto(), productList.get(position).getProductImage());
-            setProductItemClickListener(holder.getParentLayout(), productList.get(position).getId());
+            setProductItemClickListener(holder.getParentLayout(), productList.get(position));
         }
 
         @Override
@@ -178,13 +179,13 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    private void setProductItemClickListener(LinearLayout parentLayout, final String productId) {
+    private void setProductItemClickListener(LinearLayout parentLayout, final Product product) {
         final Activity self = this;
         parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(self, ProductDetails.class);
-                intent.putExtra("Product Id", productId);
+                intent.putExtra("Product", (Serializable) product);
                 startActivity(intent);
             }
         });
