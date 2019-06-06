@@ -13,7 +13,7 @@
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="450dp"
+        android:maxHeight="400dp"
         android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,6 +28,7 @@
         android:layout_marginEnd="16dp"
         android:text="Product name"
         android:textAllCaps="true"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
@@ -40,18 +41,29 @@
         android:layout_marginTop="16dp"
         android:text="Owner"
         app:layout_constraintStart_toEndOf="@+id/productName"
-        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+        app:layout_constraintBottom_toBottomOf="@+id/productName" />
 
     <TextView
         android:id="@+id/productSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:text="Product subtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productOwner" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productSubtitle" />
 
     <TextView
         android:id="@+id/shadeName"
@@ -59,42 +71,58 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:text="Shade name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productSubtitle" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productSubtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <TextView
         android:id="@+id/shadeSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="5dp"
         android:text="Shade subtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shadeName" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/more"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="expandDescription"
+        android:text="more >>"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/shadeSubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/shadeName" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Description"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shadeSubtitle" />
+
+    <TextView
+        android:id="@+id/less"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/text_less"
+        android:textColor="@color/colorPrimary"
+        android:onClick="collapseDescription"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/description" />
 
 </android.support.constraint.ConstraintLayout>

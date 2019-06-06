@@ -60,11 +60,11 @@ public class Home extends AppCompatActivity {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_search:
+                    mTextMessage.setText(R.string.title_search);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_me:
+                    mTextMessage.setText(R.string.title_me);
                     return true;
             }
             return false;
@@ -115,6 +115,7 @@ public class Home extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d("Home - fetching products", document.getId() + " => " + document.getData());
                             product = document.toObject(Product.class);
+                            product.setId(document.getId());
                             productList.add(product);
                         }
                         Log.d("Home - products", productList.get(0).toString());
