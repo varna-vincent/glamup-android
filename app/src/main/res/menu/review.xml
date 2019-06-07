@@ -8,7 +8,7 @@
         android:id="@+id/action_favorite"
         android:orderInCategory="300"
         android:title="Add Review"
-        android:icon="@drawable/ic_favorite_24px"
+        android:icon="@drawable/ic_search_24px"
         app:showAsAction="ifRoom"></item>
 
 </menu>
