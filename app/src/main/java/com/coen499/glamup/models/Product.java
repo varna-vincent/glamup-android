@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Parcelable, Serializable {
 
@@ -19,6 +20,8 @@ public class Product implements Parcelable, Serializable {
     private String createdBy;
     private String productImage;
     private Double price;
+
+    private List<Review> reviews;
 
     public Product() {}
 
@@ -116,6 +119,14 @@ public class Product implements Parcelable, Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

@@ -71,8 +71,9 @@ public class AddReview extends AppCompatActivity {
 
         Review review = new Review();
         review.setReview(((EditText)findViewById(R.id.add_review_review)).getText().toString());
-        review.setRating(((RatingBar)findViewById(R.id.add_review_ratingBar)).getNumStars());
+        review.setRating(((RatingBar)findViewById(R.id.add_review_ratingBar)).getRating());
         review.setUserEmail(firebaseUser.getEmail());
+        review.setUserName(firebaseUser.getDisplayName());
 
         reviewsRef.add(review).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
