@@ -1,18 +1,24 @@
 package com.coen499.glamup.models;
 
-public class User {
+import android.net.Uri;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String tokenId;
     private String userName;
     private String userEmail;
+    private String userPhoto;
 
     public User() {}
 
-    public User(String tokenId, String userName, String userEmail) {
+    public User(String tokenId, String userName, String userEmail, String userPhoto) {
 
-        this.userEmail=userEmail;
-        this.userName=userName;
-        this.tokenId=tokenId;
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.tokenId = tokenId;
+        this.userPhoto = userPhoto;
     }
 
     public String getTokenId() {
@@ -25,5 +31,9 @@ public class User {
 
     public String getUserEmail() {
         return userEmail;
+    }
+
+    public String getUserPhoto() {
+        return userPhoto;
     }
 }

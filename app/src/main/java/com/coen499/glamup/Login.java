@@ -1,6 +1,7 @@
 package com.coen499.glamup;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -114,8 +115,9 @@ public class Login extends AppCompatActivity {
                 if(task.isSuccessful()){
                     String userEmail = googleSignInAccount.getEmail();
                     String userName = googleSignInAccount.getDisplayName();
+                    String userPhoto = googleSignInAccount.getPhotoUrl().toString();
                     String tokenId = FirebaseInstanceId.getInstance().getToken();
-                    User user = new User(tokenId, userName, userEmail);
+                    User user = new User(tokenId, userName, userEmail, userPhoto);
 
                     rootRef.collection("users").document(userEmail).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

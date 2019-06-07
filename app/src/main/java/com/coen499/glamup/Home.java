@@ -40,10 +40,7 @@ import java.util.List;
 public class Home extends AppCompatActivity {
 
     private TextView mTextMessage;
-
-    private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestoreRef;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private RecyclerView homeRecyclerView;
     private ProductRecyclerAdapter productRecyclerAdapter;
@@ -80,18 +77,12 @@ public class Home extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        firebaseAuth = FirebaseAuth.getInstance();
         firestoreRef = FirebaseFirestore.getInstance();
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if(firebaseUser== null){
-                    Intent intent = new Intent(Home.this, Login.class);
-                    startActivity(intent);
-                }
-            }
-        };
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser== null) {
+            Intent intent = new Intent(Home.this, Login.class);
+            startActivity(intent);
+        }
 
         homeRecyclerView = (RecyclerView) findViewById(R.id.home_recycler_view);
         homeRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
