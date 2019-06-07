@@ -63,7 +63,7 @@ public class Home extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_search);
                     return true;
                 case R.id.navigation_me:
-                    mTextMessage.setText(R.string.title_me);
+                    startActivity(new Intent(getBaseContext(), Profile.class));
                     return true;
             }
             return false;
