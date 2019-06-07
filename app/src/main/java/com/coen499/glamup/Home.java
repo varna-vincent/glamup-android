@@ -29,7 +29,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -48,6 +50,7 @@ public class Home extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private List<Product> productList;
+    private String type;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -79,6 +82,7 @@ public class Home extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().findItem(R.id.navigation_home).setChecked(true);
 
+        type = getIntent().getStringExtra("type");
         firestoreRef = FirebaseFirestore.getInstance();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser== null) {
@@ -98,8 +102,8 @@ public class Home extends AppCompatActivity {
     private void fetchProductsNearMe(final ProductRecyclerAdapter productRecyclerAdapter) {
 
         productList = new ArrayList<>();
-        firestoreRef.collection("products")
-            .get()
+        Query query = (type == null) ? firestoreRef.collection("products") : firestoreRef.collection("products").whereEqualTo("productType", type);
+        query.get()
             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -111,7 +115,7 @@ public class Home extends AppCompatActivity {
                             product.setId(document.getId());
                             productList.add(product);
                         }
-                        Log.d("Home - products", productList.get(0).toString());
+                        Log.d("Home - products", "" + productList.size());
                     } else {
                         Log.w("Home - fetching products", "Error getting documents.", task.getException());
                     }

@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.io.Serializable;
 
@@ -46,9 +47,19 @@ public class Search extends AppCompatActivity {
 
         Toolbar mTopToolbar = (Toolbar) findViewById(R.id.search_toolbar);
         setSupportActionBar(mTopToolbar);
+
+        findViewById(R.id.textLipstick).setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(Search.this, Home.class);
+                intent.putExtra("type", "Lipstick");
+                startActivity(intent);
+            }
+        });
     }
 
     public void search(View view) {
+
     }
 
     @Override
