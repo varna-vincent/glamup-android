@@ -41,7 +41,6 @@ import java.util.List;
 
 public class Home extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private FirebaseFirestore firestoreRef;
 
     private RecyclerView homeRecyclerView;
@@ -55,12 +54,13 @@ public class Home extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    startActivity(new Intent(getBaseContext(), Home.class));
                     return true;
                 case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_search);
+                    startActivity(new Intent(getBaseContext(), Search.class));
                     return true;
                 case R.id.navigation_me:
                     startActivity(new Intent(getBaseContext(), Profile.class));
@@ -75,7 +75,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
