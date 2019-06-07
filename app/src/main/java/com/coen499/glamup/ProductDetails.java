@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coen499.glamup.models.Product;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,8 +30,16 @@ public class ProductDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_left_24px));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSupportNavigateUp();
+            }
+        });
 
         Intent intent = getIntent();
         product = (Product)intent.getSerializableExtra("Product");
@@ -67,29 +74,41 @@ public class ProductDetails extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.review, menu);
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_favorite) {
-            Intent intent = new Intent(this, AddReview.class);
-            intent.putExtra("selectedProduct", (Serializable) product);
-            startActivity(intent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void redirectAddReview(View view) {
+        Intent intent = new Intent(this, AddReview.class);
+        intent.putExtra("selectedProduct", (Serializable) product);
+        startActivity(intent);
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.review, menu);
+//        return true;
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_favorite) {
+//            Intent intent = new Intent(this, AddReview.class);
+//            intent.putExtra("selectedProduct", (Serializable) product);
+//            startActivity(intent);
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void setPhotoByProductId(final ImageView imageView, String imageURL) {
 

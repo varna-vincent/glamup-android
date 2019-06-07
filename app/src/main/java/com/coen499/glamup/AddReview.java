@@ -34,6 +34,7 @@ public class AddReview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_review);
 
@@ -44,9 +45,14 @@ public class AddReview extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Toolbar mActionbar = findViewById(R.id.add_review_toolbar);
-        mActionbar.setTitle("Add Review");
-        mActionbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        Toolbar toolbar = findViewById(R.id.add_review_toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_left_24px));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSupportNavigateUp();
+            }
+        });
 
         Intent intent = getIntent();
         product = (Product)intent.getSerializableExtra("selectedProduct");
@@ -57,6 +63,7 @@ public class AddReview extends AppCompatActivity {
     }
 
     public void addReview(View view) {
+
         Log.d("add review", firebaseUser.getDisplayName() + "," + firebaseUser.getEmail());
         CollectionReference reviewsRef = firestoreRef
                 .collection("products").document(product.getId())

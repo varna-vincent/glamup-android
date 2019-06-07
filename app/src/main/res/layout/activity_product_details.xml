@@ -18,7 +18,29 @@
             android:layout_height="?attr/actionBarSize"
             style="@style/HeaderBar"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:elevation="2dp" />
+            android:elevation="2dp">
+
+            <Button
+                android:id="@+id/button_goto_addreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text=" Add Review"
+                android:textAllCaps="false"
+                android:background="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_favorite_24px"
+                android:textSize="12sp"
+                android:onClick="redirectAddReview"
+                android:textColor="@color/colorSecondary"
+                android:layout_gravity="end"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
